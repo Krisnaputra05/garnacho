@@ -14,14 +14,19 @@
       background: #DA291C;
       color: white;
       font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s ease;
     }
     .profile-card {
       background: white;
       border-radius: 20px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
       overflow: hidden;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
+      transition: transform 0.3s ease;
+    }
+    .profile-card:hover {
+      transform: scale(1.05);
     }
     .profile-header {
       text-align: center;
@@ -29,6 +34,7 @@
       background: #A51D1B;
       color: white;
       border-bottom: 5px solid #DA291C;
+      animation: fadeIn 1s ease-out;
     }
     .profile-header img {
       width: 80px;
@@ -36,10 +42,15 @@
       border-radius: 50%;
       border: 4px solid white;
       margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    .profile-header img:hover {
+      transform: rotate(360deg);
     }
     .profile-header h2 {
       margin: 0;
       font-size: 2.5rem;
+      animation: slideIn 1s ease-out;
     }
     .profile-header p {
       margin: 0;
@@ -55,6 +66,7 @@
       color: #DA291C;
       font-weight: bold;
       margin-bottom: 20px;
+      animation: bounceIn 1s ease;
     }
     .profile-content p {
       color: #333333;
@@ -68,6 +80,7 @@
       border-radius: 50px;
       padding: 10px 25px;
       font-size: 1rem;
+      transition: background 0.3s ease;
     }
     .btn-read-more:hover {
       background: #A51D1B;
@@ -80,6 +93,7 @@
       border-radius: 20px;
       margin-top: 30px;
       text-align: center;
+      animation: fadeInUp 1s ease-out;
     }
     .achievements h3 {
       color: #DA291C;
@@ -93,9 +107,181 @@
       margin-bottom: 10px;
       font-size: 1.1rem;
     }
+
+    .gallery {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 30px;
+    }
+    .gallery h3 {
+      color: #DA291C;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .gallery img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background-color: #333;
+      color: white;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Card Section */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease-in-out;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      color: #DA291C;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    .btn-custom {
+      background: #DA291C;
+      color: white;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background: #A51D1B;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        font-size: 2rem;
+      }
+
+      .card-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Toggle Dark Mode -->
+  <button id="dark-mode-toggle" class="btn btn-dark position-fixed" style="top: 20px; right: 20px; z-index: 1000;">🌙</button>
+
   <div class="container py-5">
     <div class="profile-card">
       <div class="profile-header">
@@ -110,10 +296,6 @@
         <a href="#" class="btn btn-read-more">Baca Selengkapnya</a>
       </div>
 
-      <!-- <div class="additional-image">
-          <img src="granacho.jpg" alt="Stadion Old Trafford">
-      </div> -->
-
       <div class="achievements">
         <h3>Prestasi Klub</h3>
         <ul>
@@ -124,8 +306,62 @@
         </ul>
       </div>
     </div>
+
+    <!-- Parallax Section -->
+    <div class="parallax"></div>
+
+    <!-- Galeri Foto -->
+    <section class="card-container">
+      <div class="card">
+        <img src="antony.jpg" alt="Antony">
+        <div class="card-body">
+          <h5 class="card-title">Antony</h5>
+          <p class="card-text">Pemain yang penuh semangat dan skill luar biasa. Lihat aksi terbaiknya di Manchester United!</p>
+          <a href="#" class="btn-custom">Lihat Profil</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="bruno.jpg" alt="Bruno Fernandes">
+        <div class="card-body">
+          <h5 class="card-title">Bruno Fernandes</h5>
+          <p class="card-text">Kapten yang penuh inspirasi, Bruno Fernandes adalah otak dari permainan Manchester United.</p>
+          <a href="#" class="btn-custom">Lihat Profil</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="ronaldo.jpg" alt="Cristino ROnaldo">
+        <div class="card-body">
+          <h5 class="card-title">Cristino ROnaldo</h5>
+          <p class="card-text">Kiper legendaris yang menjadi tembok pertahanan utama Manchester United.</p>
+          <a href="#" class="btn-custom">Lihat Profil</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="10.jpg" alt="Marcus Rashford">
+        <div class="card-body">
+          <h5 class="card-title">Marcus Rashford</h5>
+          <p class="card-text">Pemain muda yang penuh potensi dan memiliki kontribusi besar untuk klub.</p>
+          <a href="#" class="btn-custom">Lihat Profil</a>
+        </div>
+      </div>
+    </section>
   </div>
 
+  <footer>
+    <p>&copy; 2024 Manchester United. All Rights Reserved.</p>
+    <p>Visit <a href="https://www.manutd.com" target="_blank">Official Manchester United Website</a></p>
+  </footer>
+
+  <!-- Bootstrap JS & Dependencies -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDarkMode = document.body.classList.contains("dark-mode");
+      darkModeToggle.textContent = isDarkMode ? "☀️" : "🌙";
+    });
+  </script>
 </body>
 </html>
